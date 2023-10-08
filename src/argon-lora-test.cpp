@@ -16,9 +16,11 @@
 void setup();
 void loop();
 #line 10 "e:/Villanova/PhotonProjects/argon-lora-test/src/argon-lora-test.ino"
-#define LoRa_SS D6
-#define LoRa_SDA D1
-#define LoRa_SCL D2
+#define LoRa_IRQ D6   // pin connected to LoRa's interrupt pin
+#define LoRa_NSS D1   // pin connected to LoRa's slave select pin
+#define LoRa_RST D2   // pin connected to LoRa's reset pin
+
+#define LED_BUILTIN D7
 
 // Network Session Key (MSB)
 uint8_t NwkSkey[16] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };

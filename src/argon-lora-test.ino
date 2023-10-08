@@ -11,6 +11,8 @@
 #define LoRa_NSS D1   // pin connected to LoRa's slave select pin
 #define LoRa_RST D2   // pin connected to LoRa's reset pin
 
+#define LED_BUILTIN D7
+
 // Network Session Key (MSB)
 uint8_t NwkSkey[16] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
