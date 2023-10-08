@@ -11,7 +11,19 @@
 #define LoRa_NSS D1   // pin connected to LoRa's slave select pin
 #define LoRa_RST D2   // pin connected to LoRa's reset pin
 
-#define LED_BUILTIN D7
+#define ONBOARD_LED D7
+
+// TO DO: 
+//    Read on LoRa Protocol, watch Youtube
+//    Read on Network Session Key, Application Session Key and Device Address
+//    Include AnalogRead() to sensors, and write that as loraData
+//    Change Pinout for TinyLoRa or Particle Argon
+//    Hook to MQTT (?) --> Read about LoRa to MQTT
+//    Make 3 variations:
+//        Receivers : Receive LoRa, push to MQTT broker
+//        Repeaters : Receive Lora, push LoRa (other channel)
+//        Sensors   : Receive Sensors, push LoRa
+//        1 code applies to all 3? --> Security issues (?) & device storage (?)
 
 // Network Session Key (MSB)
 uint8_t NwkSkey[16] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
@@ -36,10 +48,10 @@ void setup()
 {
   delay(2000);
   Serial.begin(9600);
-  while (! Serial);
+  while (!Serial);
   
   // Initialize pin LED_BUILTIN as an output
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(ONBOARD_LED, OUTPUT);
   
   // Initialize LoRa
   Serial.print("Starting LoRa...");
@@ -71,7 +83,8 @@ void loop()
   // Optionally set the Frame Port (1 to 255)
   // uint8_t framePort = 1;
   // lora.sendData(loraData, sizeof(loraData), lora.frameCounter, framePort);
-  Serial.print("Frame Counter: ");Serial.println(lora.frameCounter);
+  Serial.print("Frame Counter: ");
+  Serial.println(lora.frameCounter);
   lora.frameCounter++;
 
   // blink LED to indicate packet sent
